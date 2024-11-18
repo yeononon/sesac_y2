@@ -1,0 +1,31 @@
+.div1{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+}
+.div1:hover {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+}
+.div1:active {
+    width: 200px;
+    height: 100px;
+    background-color: brown;
+}
+input:focus {
+    outline-color: aquamarine;
+    color: lightblue;
+    background-color: violet;
+}
+.links > a:visited{
+    background-color: red;
+}
+[disabled] {
+    color: red;
+    background-color: aquamarine;
+}
+[type="password"] {
+    color: blue;
+    background-color: brown;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>일깃</li>
+    </ul>
+
+    <h2>img 태그</h2>
+    <!-- 상대경로: 현재 위치를 기준으로하는 상대적인 경로
+     -프로젝트 위치가 바뀌어도 그대로 사용가능
+     -목적 파일의 위치가 바뀐다면 상대경로로 수정해야 함 ex. ./src -->
+     <img src="./image/실습 img.jpeg" alt="강아지" width="400" height="200">
+
+     <br>
+     <!-- 절대 경로: root부터 해당 파일까지의 경로
+      내 로컬 환경에서는 어느 곳에서든 접근 가능하다는 것이 장점 
+      다른 로컬에서는 절대 경로가 실제로 동일해야만 접근가능하다는 것이 단점
+      -->
+      <img src="C:">
+      <!-- 인터넷 이미지 주소로 지정 -->
+        <a href="https://search.naver.com/search.naver?ssc=tab.image.all&where=image&sm=tab_jum&query=%EA%B3%A8%EB%93%A0+%EB%A6%AC%ED%8A%B8%EB%A6%AC%EB%B2%84#imgId=image_sas%3Ablog_0c070fe1cb6637e6e1bdfdd58523790f" target="_blank">골든리트리버 검색란</a>
+        <a
+        href="https://search.naver.com/search.naver?ssc=tab.image.all&where=image&sm=tab_jum&query=%EA%B3%A8%EB%93%A0+%EB%A6%AC%ED%8A%B8%EB%A6%AC%EB%B2%84#imgId=image_sas%3Ablog_0c070fe1cb6637e6e1bdfdd58523790f"
+        target="_blank"
+        title="마우스 올리면 나타남">네이버 바로가기</a>
+        <!-- 
+        form 태그: 사용자가 폼에 입력한 값을 전달할 주소
+        -action 속성: 사용자가 폼에 입력한 값을 전달할 주소
+        -method 속성: 사용자가 폼에 입력한 겂을 전달할 방법
+        => 위 두가지 속성은 "서버" 관련된 내용
+          -->
+        <form action="">
+            <!--
+                form 요소: 폼 태그 안에 있는 사용자의 입력값을 받는 요소
+                input, textarea, select ... 태그들에는 name 속성을  
+             -->
+        </form>
+        <!-- label 태그의 for 속성값과 input 태그의 id 속상값을 일치시키면,
+         label 글씨를 클릭했을 때 inpput 창에 포함 -->
+
+         <input type="email" id="user-email">
+         <input type="color">
+         <input type="range">
+         <input type="file">
+         <input type="number">
+         <input type="date">
+         <input type="password">
+
+        <h3>당신의 취미는 무엇인가요</h3>
+        <input type="checkbox" name="interest" value="basketball">농구
+        <input type="checkbox" name="interest" value="basketball">축구
+        <input type="checkbox" name="interest" value="basketball" />드라마
+        <!-- radio input vs. checkbox input -->
+        <!-- radio, checkbox input: 같은 name 속성값을 부여해서 "카테고리"화 해줘야 함 -->
+        <!-- checked 속성 : 해당 옵션이 기본으로 체크되어 있도록 해줌 -->
+        <!-- textarea -->
+         <textarea>
+
+         </textarea>
+
+         <select name="" id="">
+
+         <optgroup label="red flower">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+         </optgroup>
+         <fieldset>
+            <legend>개인 정보</legend>
+            <label for="name">이름</label><input type="text" id="name"><br>
+            <label for="age">나이</label><input type="text" id="name"><br>
+         </fieldset>
+         <form action="">
+         <input type="button" value="단순 버튼1">
+         <button type="submit">제출 버튼2</button>
+         <!-- type 속성 -->
+          <input type="submit" value="제출 버튼1">
+          
+        </form>
+</body>
+</html>
