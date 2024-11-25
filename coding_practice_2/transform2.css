@@ -1,0 +1,58 @@
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.bounce-ball {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient( yellow, red);
+    border-radius: 50%;
+    top: 0;
+    animation: bounceball 5s linear infinite ;
+}
+
+@keyframes bounceball {
+    0%{
+        top: 0px;
+        left: 0px;
+    }
+    25% {
+        top: 0px;
+        left: calc(100vw - 100px);
+    }
+    50%{
+        top: calc(100vh - 100px);
+        left: calc(100vw - 100px);
+    }
+    75% {
+        top: calc(100vh - 100px);
+        left: 0px;
+    }
+    100%{
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.text {
+    position: absolute;
+    animation: textball 5s linear infinite ;
+
+}
+@keyframes textball {
+    0%{
+        top: 0px;
+        left: 100vw;
+    }
+    50%{
+        top: 0px;
+        left: 0px;
+    }
+
+    100%{
+        top: 0px;
+        left: 0px;
+    }
+}

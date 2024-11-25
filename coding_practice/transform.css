@@ -1,0 +1,25 @@
+.bounce-ball1 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    border-radius: 50%;
+    left: 100px;
+    top: 0;
+    animation-name: bounce1;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    animation: bounce1 1s ease-out infinite alternate
+}
+
+@keyframes bounce1 {
+    to {
+        top: 50px;
+    }
+    from {
+        top: 300px;
+    }
+}

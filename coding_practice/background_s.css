@@ -1,0 +1,21 @@
+div {
+    border-radius: 50%;
+}
+.image {
+    background-image: url(./dog_img.jpg);
+    width: 400px;
+    height: 400px;
+    background-position: center;
+    position: absolute;
+    border: 4px solid white; 
+
+}
+.circle {
+    background: linear-gradient(red, pink, orange);
+    width: 430px;
+    height: 430px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,20 @@
+.div {
+    background-color: aqua;
+    width: 800px;
+    height: 500px;
+    background-image: url(./Owl_image.png);
+    background-repeat: no-repeat;
+}
+
+.div1 {
+    background-repeat: repeat-x;
+    background-position: center;
+}
+.div2 {
+    background-position: 100px 30px;
+    background-size: contain;
+}
+.div3 {
+    background-position: 100px 100px;
+    background-size: auto 100%;
+}

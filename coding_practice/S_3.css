@@ -1,0 +1,27 @@
+.orange-box {
+    height: 200px;
+    background-color: orange;
+}
+.box{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+}
+.blue-box{
+    background-color: skyblue;
+}
+.green-box{
+    background-color: green;
+}
+.red-box{
+    background-color: red;
+}
+
+.block2{
+    background-color: blue;
+    color: white;
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    line-height: 10vh;
+}

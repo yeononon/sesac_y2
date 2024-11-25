@@ -1,0 +1,29 @@
+.container {
+    height: 500px;
+    width: 500px;
+    background-color: beige;
+    position: relative;
+}
+.item {
+    height: 100px;
+    width: 100px;
+}
+.div1 {
+    z-index: 5;
+    background-color: pink;
+    position: relative;
+}
+.div2 {
+    z-index: 2;
+    top: 30px;
+    left: 30px;
+    position: absolute;
+    background-color: red;
+}
+.div3 {
+    z-index: 3;
+    top: 60px;
+    left: 60px;
+    position: absolute;
+    background-color: blue;
+}

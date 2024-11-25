@@ -1,0 +1,17 @@
+.header {
+
+}
+.main {
+    background-color: light;
+}
+.section {
+
+}
+.aside {
+
+}
+@media (max-width: 480px) {
+    .header: {
+        hieght:50px;
+}
+}

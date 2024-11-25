@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.flex1 {
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px;
+}
+.flex2 {
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 10px;
+}
+.flex3 {
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+}
+.flex2-1 {
+    display: flex;
+    align-self: auto;
+    flex-direction: column;
+}
+.flex2-2 {
+    display: flex;
+    align-items: center;
+}
+.flex2-4 {
+    display: flex;
+    align-items: flex-end;
+}
+.fl1-1 {
+   
+}
+.item {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    text-align: center;
+    line-height: 100px;
+    margin: 5px;
+}
+.fl2-1 {
+    flex-grow: 1;
+}
+.fl2-2 {
+    flex-grow: 2;
+}
+.fl2-3 {
+    flex-grow: 3;
+}
+.fl2-4 {
+    flex-grow: 3;
+}
+.fl3-1 {
+    flex-grow: 1;
+}
+.fl3-2 {
+    flex-grow: 2;
+}
+.fl3-3 {
+    flex-grow: 3;
+}

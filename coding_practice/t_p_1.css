@@ -1,0 +1,41 @@
+textarea {
+    height: 100px;
+    width: 500px;
+}
+textarea:focus {
+    background-color: rgb(247, 112, 134);
+}
+#red {
+    accent-color: blue;
+}
+#blue {
+    accent-color: blue;
+}
+#yellow {
+    accent-color: blue;
+}
+#red:checked + label{
+    background-color: red;
+}
+#blue:checked + label{
+    background-color: blue;
+}
+#yellow:checked + label{
+    background-color: yellow;
+}
+button {
+    float: right;
+    padding: 5px 15px;
+    border-radius: 7px;
+    border: none;
+    background-color: rgb(247, 112, 134);
+    color: white
+}
+button:active {
+    background-color: gray;
+    color:pink;
+}
+h3:hover {
+    background-color: black;
+    color: white;
+}

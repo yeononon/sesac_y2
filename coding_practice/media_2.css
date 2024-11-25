@@ -1,0 +1,26 @@
+.back {
+    display: flex;
+    flex-direction: row;
+
+}
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    margin: 3px;
+    border-radius: 5px;
+}
+@media screen and (max-width: 700px){
+   .back {
+    display:flex;
+    flex-direction: column;
+   }
+   .box {
+    height: 100px;
+    width: 100px;
+    background-color: skyblue;
+    margin: 5px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+}

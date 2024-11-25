@@ -1,0 +1,71 @@
+html {
+    font-size: 20px;
+}
+
+.box {
+    margin-bottom: 100px;
+}
+
+/* css  */
+.px{
+    width: 100px;
+    height: 100px;
+    background-color: gold;
+}
+.pct-parent {
+    width: 300px;
+    height: 300px;
+    background-color: pink;
+}
+.pct-child {
+    width: 60%;
+    height: 60%;
+    background-color: palegreen;
+}
+.em {
+    font-size: 2em;
+}
+.case1 {
+    font-size: 20px;
+}
+.case2 {
+    font-size: 10px;
+}
+.em-3 {
+    font-size: 3em;
+}
+.rem {
+    font-size: 2rem;
+}
+/* css 변수 */
+/* 
+
+ */ 
+ :root{
+    --color-success: green;
+    --color-error: red;
+    --color-white: white;
+    --ok: blue;
+    --color-red-1: rgb(255, 155, 155);
+    --color-red-2: rgb(177, 3, 3);
+    /* 이런 식으로 연한 레드, 진한 레드로 구분해서 쉽게 사용가능하도록 만듦
+     */
+ }
+
+ .btn {
+    --size: 8px;
+
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: var(--size);
+    width: 100px;
+ }
+
+ .btn.success {
+    background-color: var(--color-success);
+ }
+ .btn.error {
+    background-color: var(--color-error);
+ }

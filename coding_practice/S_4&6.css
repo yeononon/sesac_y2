@@ -1,0 +1,53 @@
+.block2{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    font-size: 15px;
+    line-height: 10vh;
+}
+.block3{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    font-size: 15px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.block4{
+    border-color: blue;
+    border-top-style: double; 
+    border-left-style: dotted; 
+    border-right-style: solid; 
+    border-bottom-style: dashed;
+    height:50px;
+    width: 50px;
+    border-radius: 0 10px 8px 3px;
+}
+
+.block6{
+    display: inline-block;
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    font-size: 15px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 0 10px 8px 3px;
+}
+.block7{
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+}
+.block7:hover {
+    opacity:0
+}

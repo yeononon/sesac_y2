@@ -1,0 +1,31 @@
+.container {
+    height: 500px;
+    width: 500px;
+    background-color: beige;
+    position: relative;
+}
+.item {
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.div1{
+    background-color: pink;
+    position: relative;
+    left: 50px;
+    top: 30px;
+}
+.div2{
+    background-color: pink;
+    position: absolute;
+    right: 30px;
+    bottom: 100px;
+}
+.div3{
+    background-color: pink;
+    position: fixed;
+    right: 100px;
+    top: 100px;
+}
