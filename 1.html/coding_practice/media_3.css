@@ -2,6 +2,14 @@
     width: auto
 
 }
+.left {
+    display: none;
+}
+
+.box {
+    color: white;
+    margin: 50px;
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -11,10 +19,7 @@
     justify-content: center;
     align-items: center;
 }
-.box {
-    color: white;
-    margin: 50px;
-}
+
 @media screen and (max-width:768px) {
     .background {
         display: flex;
@@ -23,20 +28,24 @@
     .menu-bar {
         display: flex;
         flex-direction: column;
+        width: auto;
+        height: 600px;
+        background-color: black;
     }
     .container {
         display: flex;
         flex-direction: column;
-        width: auto;
-        height: 500px;
-        background-color: black;
-        justify-content: flex-start;
     }
     .box {
         color: white;
-        background-color: black;
     }
     .button {
         color:white;
+    }
+    .button:active + width: auto;
+    height: 600px;
+    background-color: black;
+    justify-content: flex-start;{
+
     }
 }
