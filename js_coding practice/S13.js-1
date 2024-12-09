@@ -1,0 +1,14 @@
+const rainbow = [
+    '#FF0000',
+    '#FF7F00',
+    '#FFFF00',
+    '#00FF00',
+    '#0000FF',
+    '#4B0082',
+    '#8B00FF',
+];
+function changeColor() {
+    const index = Math.floor(Math.random() * colors.length);
+    console.log(rainbow);
+    $('.red').css('color', changeColor());
+}
