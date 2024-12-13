@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>함수 만들기</title>
+    </head>
+    <body>
+        <script>
+            function multify(a, b) {
+                return a * b;
+            }
+            console.log(multify(3, 7));
+
+            const square = function (num) {
+                console.log(num ** 2);
+            };
+            square(4);
+
+            console.log('---------');
+
+            let inputId = prompt('아이디를 입력하세요');
+            let inputPw = prompt('비밀번호를 입력하세요');
+            let userId = 'aaa';
+            let userPw = 'bbb';
+
+            function login() {
+                if (inputId == userId) {
+                    if (inputPw == userPw) {
+                        return '로그인 성공';
+                    } else if (inputPw == '') {
+                        return '비밀번호 입력 안함';
+                    } else {
+                        return 'pw 틀렸어요';
+                    }
+                } else if (inputId == '') {
+                    return '아이디 입력 안함';
+                } else {
+                    return 'Id 틀렸어요';
+                }
+            }
+
+            console.log('--------');
+
+            const age = prompt('나이를 입력하세요');
+            if (age >= 20) {
+                console.log('성인');
+            } else if (age >= 17) {
+                console.log('고등학생');
+            } else if (age >= 14) {
+                console.log('중학생');
+            } else if (age >= 8) {
+                console.log('초등학생');
+            } else {
+                console.log('유아');
+            }
+
+            let now = new Date().getHours();
+            console.log(now >= 12 ? '오후' : '오전');
+
+            console.log('--------');
+
+            let sum = 0;
+            for (let k = 0; k <= 100; k++) {
+                if (k % 2 == 0 || k % 5 == 0) {
+                    sum += k;
+                }
+            }
+            console.log(sum);
+
+            for (let m = 1; m < 10; m++) {
+                for (let n = 1; n < 10; n++) {
+                    console.log(m * n);
+                }
+            }
+        </script>
+    </body>
+</html>

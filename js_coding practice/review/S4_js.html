@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const userInfo = {
+                name: 'Lee',
+                age: 25,
+                job: 'Developer',
+                city: 'Seoul',
+            };
+
+            const { name, age, ...rest } = userInfo;
+            const restInfo = { ...rest };
+            console.log(name);
+            console.log(age);
+            console.log(restInfo);
+
+            const evenNumbers = [2, 4, 6];
+            const oddNumbers = [1, 3, 5];
+            const New = [...evenNumbers, ...oddNumbers];
+            [first, second, ...remaining] = New;
+            console.log(first);
+            console.log(second);
+            console.log(remaining);
+
+            class Shape {
+                constructor(width, height) {
+                    this.width = width;
+                    this.height = height;
+                }
+                getArea() {
+                    return this.width * this.height;
+                }
+            }
+
+            class Rectangle extends Shape {
+                constructor(width, height) {
+                    super(width, height);
+                }
+
+                getDiagonal() {
+                    const diagonal = Math.sqrt(
+                        this.width ** 2 + this.height ** 2
+                    );
+                    return diagonal;
+                }
+            }
+
+            let rec2 = new Rectangle(8, 3);
+            console.log('사각형 넓이: ' + rec2.getArea());
+            console.log('직사각형 대각선: ' + rec2.getDiagonal());
+
+            class Triangle extends Shape {
+                constructor(width, height) {
+                    super(width, height);
+                }
+
+                getArea() {
+                    return (this.width * this.height) / 2;
+                }
+            }
+
+            let tri = new Triangle(2, 3);
+            console.log('삼각형 넓이: ' + tri.getArea());
+
+            class Circle extends Shape {
+                constructor(radius) {
+                    super(radius, radius); // 원이므로, width와 height가 동일
+                }
+
+                getArea() {
+                    const radius = this.width; // width가 radius 역할을 함
+                    return Math.PI * radius ** 2;
+                }
+            }
+
+            let circle = new Circle(7); // 원의 반지름 7
+            console.log('원 넓이: ' + circle.getArea());
+        </script>
+    </body>
+</html>
