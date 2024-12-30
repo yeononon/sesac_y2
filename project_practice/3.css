@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+
+    width: 1200px;
+    height: 80px;
+    margin: 0, auto;
+    background-color: #ffffff;
+}
+ul {
+    list-style: none; /* 목록 스타일 제거 */
+    flex-wrap: nowrap;
+}

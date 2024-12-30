@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .banner_part {
+                width: 1200px;
+                height: 299px;
+                flex-shrink: 0;
+            }
+            .banner_bg {
+                display: flex;
+                width: 1200px;
+                height: 238px;
+                padding: 38px 43px 51px 43px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                flex-shrink: 0;
+                border-radius: 32px;
+                background: var(--Mint-90, #dff6f1);
+            }
+            /* .banner_img {
+        width: 444px;
+        height: 444px;
+        flex-shrink: 0;
+        opacity: 0.9;
+        background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+      } */
+            .content_part {
+                display: flex;
+                width: 631px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 7px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section class="banner_part">
+                <div class="banner_bg"></div>
+                <div class="banner_img"></div>
+            </section>
+
+            <section class="content_part">
+                <article class="content1">
+                    <div class="content_top">
+                        <div class="content_title1">주요 일정</div>
+                    </div>
+                    <div class="content_bottom"></div>
+                </article>
+                <article class="content2">
+                    <div class="content_title2"></div>
+                    <div class="content_graph"></div>
+                </article>
+            </section>
+
+            <section class="calendar_part">
+                <div></div>
+            </section>
+        </main>
+    </body>
+</html>
