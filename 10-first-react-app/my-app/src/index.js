@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Clock from './Clock';
+// import Clock from './Clock';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,10 +26,10 @@ root.render(
 // -매초 전체 UI를 다시 그리도록 element를 만들었지만
 // -리엑트 돔은 내용이 변경된 텍스트 노드만 업데이트 하고 았다다
 
-setInterval(() => {
-    root.render(
-        <React.StrictMode>
-            <Clock></Clock>
-        </React.StrictMode>
-    );
-}, 1000);
+// setInterval(() => {
+//     root.render(
+//         <React.StrictMode>
+//             <Clock></Clock>
+//         </React.StrictMode>
+//     );
+// }, 1000);
