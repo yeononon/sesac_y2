@@ -17,6 +17,11 @@ function App() {
             {/* children- 단일 자식 요소 전달 */}
             <Button link="https://www.google.com">Google</Button>
             <Button></Button>
+            <hr />
+            <MultiChild>
+                <b>다중 자식</b>
+                <p>요소 전달</p>
+            </MultiChild>
         </div>
     );
 }
