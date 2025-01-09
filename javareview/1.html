@@ -4,12 +4,37 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            ul {
+                list-style-type: none;
+            }
+            li {
+                padding: 10px;
+                background-color: #f0f0f0;
+                margin: 5px;
+                display: flex;
+                justify-content: space-between;
+            }
+            input {
+                height: 100px;
+                width: 500px;
+            }
+            button {
+                background-color: red;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <ul id="fruitList"></ul>
         <input type="text" class="formText" />
         <button class="button1">버튼</button>
         <ul id="commentList"></ul>
+        <h1>여기는 방명록!</h1>
+        <input type="text" class="userName" />
+        <input type="text" class="userText" />
         <script src="./1.js"></script>
     </body>
 </html>
