@@ -109,3 +109,9 @@ const addEvent = () => {
 };
 
 addEvent();
+
+// 콜백함수
+const first = (callback) => {
+    console.log('안녕하세요!');
+    callback();
+};

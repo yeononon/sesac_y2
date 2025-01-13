@@ -1,5 +1,14 @@
 import './App.css';
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+    useEffect,
+    useState,
+    useRef,
+    useMemo,
+    useCallback,
+    createContext,
+    useContext,
+    useReducer,
+} from 'react';
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
@@ -223,7 +232,7 @@ export const LifeCycleFunc = () => {
     );
 };
 
-export const useEffectFunc = () => {
+export const UseEffectFunc = () => {
     const fakePosts = [
         {
             id: 1,
@@ -276,7 +285,325 @@ export const useEffectFunc = () => {
             body: 'quo et expedita modi cum officia vel magni doloribus qui repudiandae vero nisi sit quos veniam quod sed accusamus veritatis error',
         },
     ];
-    return <div>App</div>;
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        setTimeout(() => {
+            setPosts(fakePosts);
+        }, 2000);
+    }, []);
+    console.log(posts);
+    return (
+        <div>
+            {posts.length === 0 ? (
+                <p>Loading...</p>
+            ) : (
+                posts.map((post) => <p key={post.id}>{post.title}</p>)
+            )}
+        </div>
+    );
+};
+
+export const Hooksfunc = () => {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // 홀수의 합 계산 함수
+    const oddSum = useMemo(() => {
+        return numbers
+            .filter((num) => num % 2 !== 0)
+            .reduce((acc, num) => acc + num, 0);
+    }, [numbers]);
+    return (
+        <div>
+            <h1>Odd sum:{oddSum}</h1>
+        </div>
+    );
+};
+
+export const Hooksfunc2 = () => {
+    const people = [
+        { name: 'Alice', age: 25 },
+        { name: 'Bob', age: 30 },
+        { name: 'Anna', age: 22 },
+        { name: 'Charlie', age: 35 },
+    ];
+    const ageSum = useMemo(() => {
+        return people
+            .filter((person) => person.name.startsWith('A'))
+            .reduce((acc, person) => {});
+    });
+    return (
+        <div>
+            <h1>Age sum:{ageSum}</h1>
+        </div>
+    );
+};
+
+// 1. Context 생성
+const ThemeContext = createContext();
+
+export const ThemeProvider = () => {
+    const [theme, setTheme] = useState('light'); // 초기 테마 설정
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light')); // 테마 토글 함수
+    };
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <ThemeToggler /> {/* 테마 변경 버튼 */}
+        </ThemeContext.Provider>
+    );
+};
+
+export const ThemeToggler = () => {
+    const { theme, toggleTheme } = useContext(ThemeContext); // Context에서 값을 가져옴
+
+    return (
+        <div>
+            <h1>The current theme is {theme}</h1> {/* 현재 테마 표시 */}
+            <button onClick={toggleTheme}>Toggle Theme</button>{' '}
+            {/* 테마 변경 버튼 */}
+        </div>
+    );
+};
+
+export const ProductFilter = () => {
+    // 상품 가격 제한 상태 관리
+
+    const products = [
+        { name: 'Product A', price: 30 },
+        { name: 'Product B', price: 50 },
+        { name: 'Product C', price: 70 },
+    ];
+    // 값 입력창 만들기
+    const [priceLimit, setPriceLimit] = useState('');
+    const inputPrice = (e) => {
+        setPriceLimit(e.target.value);
+    };
+    // 입력된 값으로 필터링 하기기
+    const filteredProducts = useMemo(() => {
+        // 여기에 필터링 로직 작성
+        //     return products.filter(prc=> priceLimit > prc)
+        //   }, [products]);
+        // 숫자니까 숫자로 바꿔주는 과정을 한번 더 거쳐야 함함
+        const limit = parseFloat(priceLimit);
+        // parseFloat/parseInt/Number/string/tostring/object
+        return products.filter((prc) => limit > prc.price);
+    }, [priceLimit, products]);
+
+    return (
+        <div>
+            <h2>Product Filter</h2>
+            <input
+                type="number"
+                value={priceLimit}
+                onChange={inputPrice}
+                // value랑 onChang 구분해서 쓰기, onChange는 값 입력에 매우 필수
+                placeholder="Enter price limit"
+            />
+            <ul>
+                {filteredProducts.map((product, index) => {
+                    return (
+                        <li key={index}>
+                            {product.name}-${product.price}
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+};
+export const products = [
+    { id: 1, name: 'Apple' },
+    { id: 2, name: 'Banana' },
+    { id: 3, name: 'Cherry' },
+];
+
+const ShoppingCartApp = () => {
+    const [cart, setCart] = useState([]);
+
+    const addToCart = useCallback(
+        (product) => {
+            // prev.이전 상태도 적어줘야 함
+            setCart((prev) => [...prev, product]);
+        },
+        [
+            /* 의존성 배열 */
+        ]
+    );
+
+    const removeFromCart = useCallback((productId) => {
+        setCart((prev) => prev.filter((item) => item.id !== productId));
+        // 장바구니에서 상품 제거 로직 작성
+    }, []);
+
+    // addToCart 참조값 변경 여부 확인 [useEffect]
+
+    // removeFromCart 참조값 변경 여부 확인 [useEffect]
+
+    return (
+        <div>
+            <h2>Products</h2>
+            <ul>
+                {products.map((product) => {
+                    return (
+                        <li key={product.id}>
+                            {product.name}
+                            <button onClick={() => addToCart(product)}>
+                                Add to cart
+                            </button>
+                        </li>
+                    );
+                })}
+            </ul>
+            <h2>Shopping Cart</h2>
+            <ul>
+                {/* cart.map을 해야함 */}
+                {cart.map((product) => {
+                    return (
+                        <li key={product.id}>
+                            {product.name}
+                            <button onClick={() => removeFromCart(product.id)}>
+                                {/* id 기준으로 배열 변경하기에(prodct.id 붙여야 함) */}
+                                Remove
+                            </button>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+};
+
+const todoReducer = (state, action) => {
+    switch (action.type) {
+        case 'add':
+            return [...state, { id: Date.now(), text: action.payload }];
+        case 'delete':
+            return state.filter((todo) => todo.id !== action.payload);
+        default:
+            return state;
+    }
+};
+export const Todofunc = () => {
+    const [input, setInput] = useState('');
+    const [todos, dispatch] = useReducer(todoReducer, []);
+    const handleAdd = () => {
+        dispatch({ type: 'add', payload: input });
+        setInput('');
+        // 입력초기화화
+    };
+    return (
+        <div>
+            <h1>Todo List</h1>
+            <input
+                type="text"
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="할 일을 추가하세요"
+                value={input}
+            ></input>
+            <button onClick={handleAdd}>Add</button>
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id}>
+                        {todo.text}
+                        <button
+                            onClick={() =>
+                                dispatch({ type: 'delete', payload: todo.id })
+                            }
+                        >
+                            delete
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+const UserContext = createContext();
+
+export const Initial = () => {
+    const [user, setUser] = useState({ name: 'Yeon', age: 30 });
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            <UserProfile></UserProfile>
+            <UpdateUSer></UpdateUSer>
+        </UserContext.Provider>
+    );
+};
+export const UserProfile = () => {
+    const { user, age } = useContext(UserContext);
+    return (
+        <div>
+            <h2>User Profile</h2>
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+        </div>
+    );
+};
+export const UpdateUSer = () => {
+    const { user, setUser } = useContext(UserContext);
+
+    // /useState 말고 useContext
+    const inputUser = (e) => {
+        return setUser({ ...user, name: e.target.value });
+    };
+    const inputAge = (e) => {
+        return setUser({ ...user, age: e.target.value });
+    };
+    return (
+        <div>
+            <h2>User Information</h2>
+            <input
+                type="text"
+                onChange={inputUser}
+                placeholder="이름을 입력해주세요"
+            ></input>
+            <br></br>
+            <input
+                type="text"
+                onChange={inputAge}
+                placeholder="나이를 입력해주세요"
+            ></input>
+        </div>
+    );
+};
+
+// useContext 생성 및 Provider 작성
+const NameContext = createContext();
+
+export const DisplayName = () => {
+    // 작성해야 할 부분 (useContext로 이름 상태 가져오기)
+    const { name, setName } = useContext(NameContext);
+
+    return <h1>Hello, {name || 'Guest'}!</h1>;
+};
+
+export const NameInput = () => {
+    // 작성해야 할 부분 (useContext로 setName 가져오기)
+    const { setName } = useContext(NameContext);
+
+    return (
+        <input
+            type="text"
+            placeholder="Enter your name"
+            onChange={(e) => {
+                setName(e.target.value);
+            }}
+        />
+    );
+};
+
+export const Initial2 = () => {
+    const [name, setName] = useState('Guest');
+    // useState는 대괄호 주의**********
+    return (
+        // 작성해야 할 부분
+        <NameContext.Provider value={{ name, setName }}>
+            <DisplayName></DisplayName>
+            <NameInput></NameInput>
+        </NameContext.Provider>
+    );
 };
 
 export default function App() {
@@ -313,6 +640,14 @@ export default function App() {
 
             <Practice3></Practice3>
             <LifeCycleFunc></LifeCycleFunc>
+            <UseEffectFunc></UseEffectFunc>
+            <Hooksfunc></Hooksfunc>
+            <ProductFilter></ProductFilter>
+            <ShoppingCartApp></ShoppingCartApp>
+            <ThemeProvider></ThemeProvider>
+            <Initial></Initial>
+            <Todofunc></Todofunc>
+            <Initial2></Initial2>
             {/* <div>
                 이름:
                 <input type="text"></input>
