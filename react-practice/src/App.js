@@ -9,6 +9,7 @@ import React, {
     useContext,
     useReducer,
 } from 'react';
+import { useForm } from 'react-hook-form';
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
@@ -605,6 +606,116 @@ export const Initial2 = () => {
         </NameContext.Provider>
     );
 };
+// 1/15. React Hook Form 수업
+
+export const BasicForm = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        // formState errors: 유효성 검사
+        watch,
+    } = useForm();
+    // #1. register: input이랑 연결
+    // #2. handleSubmit: 제출을 처리한 부분
+    // #3. watch: 특정 필드 변화를 실시간으로 감지
+    // #4. formState: 폼 상태 객체
+    // #4-1. errors : 유효성 검사 에러
+    //       isDirty : 폼이 수정 되었는지 여부
+    //       isSubmitting : 모든 필드가 유효한지 여부 (제출 시작 : ture / 제출 완료 : false)
+    //       isSubmitted : 폼이 한 번이라도 제출되었는지 여부.
+
+    const onSubmit = (data) => {
+        console.log('폼 제출 성공', data);
+        alert('Form submitted');
+    };
+    const onError = (err) => {
+        console.log('폼 제출 실패', err);
+    };
+    return (
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
+            <div>
+                <label>Name:</label>
+                <input
+                    id="userName"
+                    {...register('name', {
+                        required: '이름을 입력해주세요요',
+                        minLength: {
+                            value: 2,
+                            message: '최소 2글자를 입력해주세요',
+                        },
+                    })}
+                    // register(필드명) <필수>
+                    // required: 필수 여부
+                    // pattern: /^\S+@\S+$/
+                    // min, max length: 최대, 최소 길이
+                    // {errors.userName?.message}
+                    // errors: 유효성 검사가 실패한 경우에만 오류 메세지가 저장됨
+                    // ?: 앞에 있는 요소가 있는지 없는지 확인하는 연산자 / 없을 경우 undefined 반환환
+                ></input>
+                <br></br>
+                <label>Email:</label>
+                <input
+                    {...register('email', {
+                        required: '이메일을 입력해주세요요',
+                        validate: (v) =>
+                            v.includes('@') || '이메일 형태로 입력해주세요',
+                    })}
+                />
+                <br></br>
+                <label>Phone:</label>
+                <input
+                    {...register('phone', {
+                        required: '전화번호를 입력해주세요',
+                    })}
+                ></input>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    );
+};
+
+export const SForm = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const onsubmit = (data) => {
+        console.log('제출되었습니다', data);
+        alert('폼이 제출되었습니다');
+    };
+    const onError = (err) => {
+        console.log('오류입니다', err);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onsubmit, onError)}>
+            <div>
+                <label>이름:</label>
+                <input
+                    {...register('name', {
+                        required: '이름은 필수 항목입니다다',
+                    })}
+                ></input>
+                {errors.name?.message}
+                <br></br>
+                <label>나이:</label>
+                <input
+                    {...register('age', {
+                        required: '나이를를 입력해주세요',
+                        min: {
+                            value: 0,
+                            message: '0 이상의 숫자만 입력가능합니다',
+                        },
+                    })}
+                ></input>
+                {errors.age?.message}
+                <button type="submit">제출</button>
+            </div>
+        </form>
+    );
+};
 
 export default function App() {
     const name = 'Yeon';
@@ -648,6 +759,8 @@ export default function App() {
             <Initial></Initial>
             <Todofunc></Todofunc>
             <Initial2></Initial2>
+            <BasicForm></BasicForm>
+            <SForm></SForm>
             {/* <div>
                 이름:
                 <input type="text"></input>
