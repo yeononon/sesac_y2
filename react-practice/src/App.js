@@ -8,8 +8,16 @@ import React, {
     createContext,
     useContext,
     useReducer,
+    useNavigate,
 } from 'react';
 import { useForm } from 'react-hook-form';
+import {
+    Link,
+    BrowserRouter,
+    Routes,
+    Route,
+    useParams,
+} from 'react-router-dom';
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
@@ -717,6 +725,69 @@ export const SForm = () => {
     );
 };
 
+export const RouterFunc = () => {
+    const Home = () => {
+        return <h1>Welcome to the Home Page!</h1>;
+    };
+    const About = () => {
+        return <h1>This is the About Page!</h1>;
+    };
+    const Contact = () => {
+        return <h1>Contact us at contact@example.com</h1>;
+    };
+    return (
+        <div>
+            <BrowserRouter>
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/contact">Contact</Link>
+                    {/* - to : 필수 속성으로, 이동할 경로 지정 */}
+                </nav>
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/about" element={<About />}></Route>
+                    <Route path="/contact" element={<Contact />}></Route>
+                    {/* #3. Route : 특정 경로에 해당하는 컴포넌트를 렌더링 하는 역할. */}
+                    {/* ㄴ path : 특정 경로 / element : 보여줄 컨텐츠 */}
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
+};
+
+// navigate 이용
+
+const Login = () => {
+    const navigate = useNavigate();
+    const handleLogin = () => {
+        navigate('/welcome');
+    };
+    return (
+        <div>
+            <h1>Login Page</h1>
+            <button onClick={handleLogin}>Log in</button>
+        </div>
+    );
+};
+
+const Welcome = () => {
+    return <h1>Welcome to the Show!</h1>;
+};
+
+export const NavigateFunc = () => {
+    return (
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/welcome" element={<Welcome />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
+};
+
 export default function App() {
     const name = 'Yeon';
     const iflogin = true;
@@ -761,6 +832,7 @@ export default function App() {
             <Initial2></Initial2>
             <BasicForm></BasicForm>
             <SForm></SForm>
+            <RouterFunc></RouterFunc>
             {/* <div>
                 이름:
                 <input type="text"></input>
